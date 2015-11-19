@@ -10,13 +10,7 @@ class Category extends CI_Controller {
 	}
 
 	public function index(){
-		$data = array(
-			'cat_name' => "", 
-			'cat_image' => "",
-			'cat_nameErr' => "",
-			'cat_imageErr' => ""
-		);
-		$this->load->view('category_view', $data);
+		$this->load->view('category_view');
 	}
 
 	public function test(){
@@ -25,39 +19,26 @@ class Category extends CI_Controller {
 
 	public function insert()
 	{
-		$isValid = array(False, False);
+		$this->load->helper(array('form', 'url'));
 
-		$cat_name = $cat_image = $add_category = $cat_nameErr = $cat_imageErr = "";
-
-		extract($_POST);
-
-		if (empty($cat_name)) {
-			$cat_nameErr = "Category name cannot be empty";
-			$isValid[0] = False;
-		} else {
-			$params['cat_name'] = $cat_name;
-			$isValid[0] = True;
-		}
-
-		if (empty($cat_image)) {
-			$cat_imageErr = "Category image cannot be empty";
-			$isValid[1] = False;
-		} else {
-			$params['cat_image'] = $cat_image;
-			$isValid[1] = True;
-		}
+		$this->load->library('form_validation');
 		
-		if (isset($add_category) and (count(array_keys($isValid, True)) == count($isValid))) {
-			$this->category_model->insert($params);
+		$this->form_validation->set_rules('cat_name', 'Category Name', 'required');
+		$this->form_validation->set_rules('cat_image', 'Category Image', 'required');
+		
+		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+
+		if ($this->form_validation->run() == FALSE)
+		{
+			$this->load->view('category_view');
 		}
-
-		$data = array(
-			'cat_name' => $cat_name, 
-			'cat_image' => $cat_image,
-			'cat_nameErr' => $cat_nameErr, 
-			'cat_imageErr' => $cat_imageErr
-		);
-
-		$this->load->view('category_view', $data);
+		else
+		{
+			$params['cat_name'] = $this->input->post('cat_name');
+			$params['cat_image'] = $this->input->post('cat_image');
+			$this->category_model->insert($params);
+			$data['success_msg'] = "New category ".$params['cat_name']." added successfully!";
+			$this->load->view('category_view', $data);
+		}
 	}
 }
