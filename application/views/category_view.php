@@ -15,16 +15,20 @@
 				echo $success_msg; 
 		?>
 	</div>
-	<?php echo form_open('category/insert'); ?>
+	<?php echo form_open_multipart('category/insert'); ?>
 		<input type="text" name="cat_name" placeholder="Category Name" value="<?php echo set_value('cat_name'); ?>" />
 		<?php echo form_error('cat_name'); ?>
 		<br><br>
-		<input type="text" name="cat_image" placeholder="Category Image" value="<?php echo set_value('cat_image'); ?>" />
-		<?php echo form_error('cat_image'); ?>
+		<input type="file" name="userfile" size="20" />
+		<?php 
+			if(isset($image_error))
+				echo $image_error; 
+		?>
 		<br><br>
 		<button type="submit" name="add_category" value="add">ADD</button>
 	</form>
 
+	<h3>Available categories</h3>
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 </body>
 </html>

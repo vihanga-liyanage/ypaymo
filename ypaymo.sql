@@ -1,21 +1,47 @@
-DROP DATABASE IF EXISTS `ypaymo`;
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
-CREATE DATABASE `ypaymo`;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
-USE `ypaymo`;
 
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE IF NOT EXISTS `category` (
   `catID` int(5) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
-  `image` int(15) DEFAULT NULL,
-  PRIMARY KEY (`catID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `image` varchar(50) NOT NULL,
+  PRIMARY KEY (`catID`),
+  KEY `image` (`image`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 INSERT INTO `category` (`catID`, `name`, `image`) VALUES
-(1, 'cat1', 0),
-(2, 'cat2', 2),
-(3, 'Furniture', 12);
+(11, 'cat1', 'ER(1)6.png'),
+(12, 'cat2', 'modulemap3.jpg');
+
+DROP TABLE IF EXISTS `image`;
+CREATE TABLE IF NOT EXISTS `image` (
+  `file_name` varchar(50) NOT NULL,
+  `file_type` varchar(50) NOT NULL,
+  `file_path` varchar(100) NOT NULL,
+  `full_path` varchar(150) NOT NULL,
+  `raw_name` varchar(50) NOT NULL,
+  `orig_name` varchar(50) NOT NULL,
+  `client_name` varchar(50) NOT NULL,
+  `file_ext` varchar(20) NOT NULL,
+  `file_size` float NOT NULL,
+  `is_image` tinyint(4) NOT NULL,
+  `image_width` int(15) NOT NULL,
+  `image_height` int(15) NOT NULL,
+  `image_type` varchar(50) NOT NULL,
+  `image_size_str` varchar(100) NOT NULL,
+  PRIMARY KEY (`file_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `image` (`file_name`, `file_type`, `file_path`, `full_path`, `raw_name`, `orig_name`, `client_name`, `file_ext`, `file_size`, `is_image`, `image_width`, `image_height`, `image_type`, `image_size_str`) VALUES
+('ER(1)6.png', 'image/png', 'C:/xampp/htdocs/ypaymo/uploads/', 'C:/xampp/htdocs/ypaymo/uploads/ER(1)6.png', 'ER(1)6', 'ER(1).png', 'ER(1).png', '.png', 37.04, 1, 779, 1094, 'png', 'width="779" height="1094"'),
+('modulemap3.jpg', 'image/jpeg', 'C:/xampp/htdocs/ypaymo/assets/images/category/', 'C:/xampp/htdocs/ypaymo/assets/images/category/modulemap3.jpg', 'modulemap3', 'modulemap3.jpg', 'modulemap3.jpg', '.jpg', 340.04, 1, 1179, 1287, 'jpeg', 'width="1179" height="1287"');
 
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE IF NOT EXISTS `product` (
@@ -47,3 +73,11 @@ CREATE TABLE IF NOT EXISTS `subcategory` (
   `category` int(5) NOT NULL,
   PRIMARY KEY (`scatID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+ALTER TABLE `category`
+  ADD CONSTRAINT `category_ibfk_1` FOREIGN KEY (`image`) REFERENCES `image` (`file_name`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
