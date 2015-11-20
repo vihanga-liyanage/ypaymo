@@ -12,6 +12,9 @@ class Shopping extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->view('home');
 	}
+	public function test(){
+		echo "test1";
+	}
 }
 ?>
 	

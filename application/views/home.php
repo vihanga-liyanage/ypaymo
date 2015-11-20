@@ -16,9 +16,9 @@
   
 </head>
 <style>
-body{
-	padding-top : 40px;
-}
+	body{
+		padding-top : 40px;
+	}
 </style>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top" id="my-navbar">
@@ -75,16 +75,16 @@ body{
 							</ol>
 							<div class="carousel-inner">
 								<div class="item active">
-									<img class="slide-image" src="images/slider1.jpg" alt="">
+									<img class="slide-image" src="<?php echo base_url("assets/images/slider1.jpg"); ?>" alt="">
 								</div>
 								<div class="item">
-									<img class="slide-image" src="images/slider2.jpg" alt="">
+									<img class="slide-image" src="<?php echo base_url("assets/images/slider2.jpg"); ?>" alt="">
 								</div>
 								<div class="item">
-									<img class="slide-image" src="images/slider3.jpg" alt="">
+									<img class="slide-image" src="<?php echo base_url("assets/images/slider3.jpg"); ?>" alt="">
 								</div>
 								<div class="item">
-									<img class="slide-image" src="images/slider4.jpg" alt="">
+									<img class="slide-image" src="<?php echo base_url("assets/images/slider4.jpg"); ?>" alt="">
 								</div>
 							</div>
 							<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -104,7 +104,7 @@ body{
 
 					<div class="col-sm-4 col-lg-4 col-md-4">
 						<div class="thumbnail">
-							<img src="images/cartImage1.jpg" alt="">
+							<img src="<?php echo base_url("assets/images/cartImage1.jpg"); ?>" alt="">
 							<div class="caption">
 								<h4>Samsung Galaxy S6</h4>
 								<h4> Price : Rs.95,000</h4>
