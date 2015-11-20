@@ -3,14 +3,21 @@
 
 class Category extends CI_Controller {
 
+	private $data;
+
 	public function __construct(){
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
 		$this->load->model(array('category_model'));
+
+		$this->data['result'] = $this->category_model->get_categories();
+		$this->data['img_path'] = base_url("assets/images/category/");
 	}
 
 	public function index(){
-		$this->load->view('category_view');
+		$this->data['result'] = $this->category_model->get_categories();
+		$this->data['img_path'] = base_url("assets/images/category/");
+		$this->load->view('category_view', $this->data);
 	}
 
 	public function test(){
@@ -34,7 +41,7 @@ class Category extends CI_Controller {
 		{
 			//uploading the image
 			$config['upload_path'] = './assets/images/category/';
-			$config['allowed_types'] = 'gif|jpg|png';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
 			$config['max_size']	= '0';
 			$config['max_width']  = '0';
 			$config['max_height']  = '0';
@@ -44,9 +51,9 @@ class Category extends CI_Controller {
 			if ( ! $this->upload->do_upload())
 			{
 				//if the uploading failed
-				$error = array('image_error' => $this->upload->display_errors('<div class="error">', '</div>'));
+				$this->data['image_error'] = $this->upload->display_errors('<div class="error">', '</div>');
 
-				$this->load->view('category_view', $error);
+				$this->load->view('category_view', $this->data);
 			}
 			else
 			{
@@ -61,8 +68,7 @@ class Category extends CI_Controller {
 				$params['cat_image'] = $upload_data['file_name'];
 				$this->category_model->insert_into_category($params);
 
-				$data['success_msg'] = "New category '".$params['cat_name']."' added successfully!";
-				$this->load->view('category_view', $data);
+				$this->index();
 			}
 		}
 	}

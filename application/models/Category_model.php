@@ -19,8 +19,11 @@ class Category_model extends CI_Model {
 	}
 
 	public function insert_into_image($data) {
-		
-
 		$this->db->insert('image', $data['upload_data']);
+	}
+
+	public function get_categories(){
+		$query = $this->db->get($this->table);
+		return $query->result_array();
 	}
 }
