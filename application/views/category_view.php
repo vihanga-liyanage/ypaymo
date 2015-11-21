@@ -49,7 +49,7 @@
 				<td><?php echo $category['catID']; ?></td>
 				<td><?php echo $category['name']; ?></td>
 				<td><img src="<?php echo $img_path."/".$category['image']; ?>" width="100px" border="1px solid black"></td>
-				<td><?php echo anchor('', 'Update'); ?></td>
+				<td><?php echo anchor('category/update/', 'Update'); ?></td>
 				<td><?php echo anchor('', 'Delete'); ?></td>
 			</tr>
 			<?php }} ?>
