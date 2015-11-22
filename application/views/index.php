@@ -1,7 +1,7 @@
 <?php 
 
-include "asset/app/config.php";
-include "asset/app/detect.php";
+include "assets/app/config.php";
+include "assets/app/detect.php";
 
 if ($page_name=='') {
 	include 'index.html';

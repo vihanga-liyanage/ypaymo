@@ -9,12 +9,21 @@ class Category_model extends CI_Model {
 		parent::__construct();
 	}
 
-	public function insert($data) {
+	public function insert_into_category($data) {
 		$fields = array(
 			'name' => $data['cat_name'],
 			'image' => $data['cat_image']
 		);
 
 		$this->db->insert($this->table, $fields);
+	}
+
+	public function insert_into_image($data) {
+		$this->db->insert('image', $data['upload_data']);
+	}
+
+	public function get_categories(){
+		$query = $this->db->get($this->table);
+		return $query->result_array();
 	}
 }

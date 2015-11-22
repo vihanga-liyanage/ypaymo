@@ -16,9 +16,9 @@
   
 </head>
 <style>
-body{
-	padding-top : 40px;
-}
+	body{
+		padding-top : 40px;
+	}
 </style>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top" id="my-navbar">
