@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `category` (
 `catID` int(5) NOT NULL,
   `name` varchar(30) NOT NULL,
+<<<<<<< HEAD
   `image` varchar(50) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
@@ -50,15 +51,29 @@ INSERT INTO `category` (`catID`, `name`, `image`) VALUES
 --
 -- Table structure for table `image`
 --
+=======
+  `image` varchar(100) NOT NULL,
+  PRIMARY KEY (`catID`),
+  KEY `image` (`image`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+
+INSERT INTO `category` (`catID`, `name`, `image`) VALUES
+(13, 'Laptops', '10-best-laptops_8z9p_640.jpg'),
+(14, 'Smart Phones', 'ngrvanguard_com.jpg'),
+(15, 'Home Appliences', 'buying-home-appliances.jpg'),
+(16, 'Electronic Items', 'images.jpg'),
+(20, 'Mens wear', 's392843116634006568_p2_i2_w5802.jpeg'),
+(24, 'Ladies ware', 'Models-Ladies-Embroidery-Knitted-Wear-jangomart_com_2.jpg');
+>>>>>>> 8fbcae07af96c101e7a9f047107e2f19e0afb26d
 
 CREATE TABLE IF NOT EXISTS `image` (
-  `file_name` varchar(50) NOT NULL,
+  `file_name` varchar(100) NOT NULL,
   `file_type` varchar(50) NOT NULL,
   `file_path` varchar(100) NOT NULL,
   `full_path` varchar(150) NOT NULL,
-  `raw_name` varchar(50) NOT NULL,
-  `orig_name` varchar(50) NOT NULL,
-  `client_name` varchar(50) NOT NULL,
+  `raw_name` varchar(100) NOT NULL,
+  `orig_name` varchar(100) NOT NULL,
+  `client_name` varchar(100) NOT NULL,
   `file_ext` varchar(20) NOT NULL,
   `file_size` float NOT NULL,
   `is_image` tinyint(4) NOT NULL,
@@ -73,6 +88,7 @@ CREATE TABLE IF NOT EXISTS `image` (
 --
 
 INSERT INTO `image` (`file_name`, `file_type`, `file_path`, `full_path`, `raw_name`, `orig_name`, `client_name`, `file_ext`, `file_size`, `is_image`, `image_width`, `image_height`, `image_type`, `image_size_str`) VALUES
+<<<<<<< HEAD
 ('ER(1)6.png', 'image/png', 'C:/xampp/htdocs/ypaymo/uploads/', 'C:/xampp/htdocs/ypaymo/uploads/ER(1)6.png', 'ER(1)6', 'ER(1).png', 'ER(1).png', '.png', 37.04, 1, 779, 1094, 'png', 'width="779" height="1094"'),
 ('IMG_20150724_120046.jpg', 'image/jpeg', 'C:/xampp/htdocs/ypaymo/assets/images/category/', 'C:/xampp/htdocs/ypaymo/assets/images/category/IMG_20150724_120046.jpg', 'IMG_20150724_120046', 'IMG_20150724_120046.jpg', 'IMG_20150724_120046.jpg', '.jpg', 926.03, 1, 1944, 2592, 'jpeg', 'width="1944" height="2592"'),
 ('IMG_20150724_1200461.jpg', 'image/jpeg', 'C:/xampp/htdocs/ypaymo/assets/images/category/', 'C:/xampp/htdocs/ypaymo/assets/images/category/IMG_20150724_1200461.jpg', 'IMG_20150724_1200461', 'IMG_20150724_120046.jpg', 'IMG_20150724_120046.jpg', '.jpg', 926.03, 1, 1944, 2592, 'jpeg', 'width="1944" height="2592"'),
@@ -90,6 +106,14 @@ INSERT INTO `image` (`file_name`, `file_type`, `file_path`, `full_path`, `raw_na
 --
 -- Table structure for table `product`
 --
+=======
+('10-best-laptops_8z9p_640.jpg', 'image/jpeg', 'C:/xampp/htdocs/ypaymo/assets/images/category/', 'C:/xampp/htdocs/ypaymo/assets/images/category/10-best-laptops_8z9p_640.jpg', '10-best-laptops_8z9p_640', '10-best-laptops_8z9p_640.jpg', '10-best-laptops_8z9p_640.jpg', '.jpg', 29.18, 1, 496, 331, 'jpeg', 'width="496" height="331"'),
+('buying-home-appliances.jpg', 'image/jpeg', 'C:/xampp/htdocs/ypaymo/assets/images/category/', 'C:/xampp/htdocs/ypaymo/assets/images/category/buying-home-appliances.jpg', 'buying-home-appliances', 'buying-home-appliances.jpg', 'buying-home-appliances.jpg', '.jpg', 43.88, 1, 655, 400, 'jpeg', 'width="655" height="400"'),
+('images.jpg', 'image/jpeg', 'C:/xampp/htdocs/ypaymo/assets/images/category/', 'C:/xampp/htdocs/ypaymo/assets/images/category/images.jpg', 'images', 'images.jpg', 'images.jpg', '.jpg', 5.47, 1, 259, 194, 'jpeg', 'width="259" height="194"'),
+('Models-Ladies-Embroidery-Knitted-Wear-jangomart_com_2.jpg', 'image/jpeg', 'C:/xampp/htdocs/ypaymo/assets/images/category/', 'C:/xampp/htdocs/ypaymo/assets/images/category/Models-Ladies-Embroidery-Knitted-Wear-jangomart_com_2.jpg', 'Models-Ladies-Embroidery-Knitted-Wear-jangomart_com_2', 'Models-Ladies-Embroidery-Knitted-Wear-jangomart_com_.jpg', 'Models-Ladies-Embroidery-Knitted-Wear-jangomart_com_.jpg', '.jpg', 65.43, 1, 520, 469, 'jpeg', 'width="520" height="469"'),
+('ngrvanguard_com.jpg', 'image/jpeg', 'C:/xampp/htdocs/ypaymo/assets/images/category/', 'C:/xampp/htdocs/ypaymo/assets/images/category/ngrvanguard_com.jpg', 'ngrvanguard_com', 'ngrvanguard_com.jpg', 'ngrvanguard_com.jpg', '.jpg', 164.73, 1, 550, 309, 'jpeg', 'width="550" height="309"'),
+('s392843116634006568_p2_i2_w5802.jpeg', 'image/jpeg', 'C:/xampp/htdocs/ypaymo/assets/images/category/', 'C:/xampp/htdocs/ypaymo/assets/images/category/s392843116634006568_p2_i2_w5802.jpeg', 's392843116634006568_p2_i2_w5802', 's392843116634006568_p2_i2_w580.jpeg', 's392843116634006568_p2_i2_w580.jpeg', '.jpeg', 101.07, 1, 580, 374, 'jpeg', 'width="580" height="374"');
+>>>>>>> 8fbcae07af96c101e7a9f047107e2f19e0afb26d
 
 CREATE TABLE IF NOT EXISTS `product` (
 `PId` int(20) NOT NULL,
@@ -129,8 +153,19 @@ INSERT INTO `product` (`PId`, `name`, `description`, `availableQuality`, `unitPr
 CREATE TABLE IF NOT EXISTS `subcategory` (
 `scatID` int(5) NOT NULL,
   `name` varchar(30) NOT NULL,
+<<<<<<< HEAD
   `category` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+=======
+  `category` int(5) NOT NULL,
+  PRIMARY KEY (`scatID`),
+  KEY `category` (`category`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+INSERT INTO `subcategory` (`scatID`, `name`, `category`) VALUES
+(1, 'Samsung 2', 14),
+(2, 'T shirts', 20);
+>>>>>>> 8fbcae07af96c101e7a9f047107e2f19e0afb26d
 
 --
 -- Indexes for dumped tables
@@ -188,6 +223,9 @@ MODIFY `scatID` int(5) NOT NULL AUTO_INCREMENT;
 --
 ALTER TABLE `category`
 ADD CONSTRAINT `category_ibfk_1` FOREIGN KEY (`image`) REFERENCES `image` (`file_name`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `subcategory`
+  ADD CONSTRAINT `subcategory_ibfk_1` FOREIGN KEY (`category`) REFERENCES `category` (`catID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
