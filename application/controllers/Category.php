@@ -1,5 +1,5 @@
 <?php
-//defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Category extends CI_Controller {
 
@@ -15,13 +15,7 @@ class Category extends CI_Controller {
 	}
 
 	public function index(){
-		$this->data['result'] = $this->category_model->get_categories();
-		$this->data['img_path'] = base_url("assets/images/category/");
 		$this->load->view('category_view', $this->data);
-	}
-
-	public function test(){
-		echo "test";
 	}
 
 	public function insert()
@@ -68,7 +62,7 @@ class Category extends CI_Controller {
 				$params['cat_image'] = $upload_data['file_name'];
 				$this->category_model->insert_into_category($params);
 
-				$this->index();
+				redirect('category');
 			}
 		}
 	}

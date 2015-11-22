@@ -26,4 +26,14 @@ class Category_model extends CI_Model {
 		$query = $this->db->get($this->table);
 		return $query->result_array();
 	}
+
+	public function get_category_touples(){
+		$query = $this->db->get($this->table);
+		$result = $query->result_array();
+		$output['0'] = "";
+		foreach ($result as $record) {
+			$output[$record['catID']] = $record['name'];
+		}
+		return $output;
+	}
 }
