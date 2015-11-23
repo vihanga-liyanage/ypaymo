@@ -12,15 +12,15 @@ CREATE TABLE IF NOT EXISTS `category` (
   `catID` int(5) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   PRIMARY KEY (`catID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 INSERT INTO `category` (`catID`, `name`) VALUES
-(13, 'Laptops'),
-(14, 'Smart Phones'),
-(15, 'Home Appliences'),
-(16, 'Electronic Items'),
-(20, 'Mens wear'),
-(24, 'Ladies ware');
+(1, 'Laptops'),
+(2, 'Smart Phones'),
+(3, 'Home Appliences'),
+(4, 'Electronic Items'),
+(5, 'Mens wear'),
+(6, 'Ladies ware');
 
 DROP TABLE IF EXISTS `image`;
 CREATE TABLE IF NOT EXISTS `image` (
@@ -41,28 +41,32 @@ CREATE TABLE IF NOT EXISTS `image` (
   PRIMARY KEY (`file_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `image` (`file_name`, `file_type`, `file_path`, `full_path`, `raw_name`, `orig_name`, `client_name`, `file_ext`, `file_size`, `is_image`, `image_width`, `image_height`, `image_type`, `image_size_str`) VALUES
+('cartImage1.jpg', 'image/jpeg', 'C:/xampp/htdocs/ypaymo/assets/images/product/', 'C:/xampp/htdocs/ypaymo/assets/images/product/cartImage1.jpg', 'cartImage1', 'cartImage1.jpg', 'cartImage1.jpg', '.jpg', 8.74, 1, 320, 150, 'jpeg', 'width="320" height="150"');
+
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE IF NOT EXISTS `product` (
-  `pID` int(10) NOT NULL AUTO_INCREMENT,
+  `PId` int(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `description` varchar(100) NOT NULL,
-  `price` float NOT NULL,
-  `availableQty` int(5) NOT NULL,
-  `discount` decimal(3,0) DEFAULT NULL,
-  `brand` varchar(15) DEFAULT NULL,
-  `warrantyType` varchar(20) NOT NULL,
-  `warrantyPeriod` varchar(15) DEFAULT NULL,
-  `model` varchar(15) DEFAULT NULL,
-  `dimension` varchar(15) DEFAULT NULL,
-  `weight` decimal(10,0) DEFAULT NULL,
-  PRIMARY KEY (`pID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+  `description` varchar(50) NOT NULL,
+  `availableQuality` int(11) NOT NULL,
+  `unitPrice` int(20) NOT NULL,
+  `subCategory` varchar(50) NOT NULL,
+  `discount` int(11) NOT NULL,
+  `brand` varchar(45) NOT NULL,
+  `warrantyType` varchar(45) NOT NULL,
+  `warrantyPeriod` varchar(45) NOT NULL,
+  `model` varchar(45) NOT NULL,
+  `dimension` varchar(45) NOT NULL,
+  `weight` int(11) NOT NULL,
+  `dateAdded` date NOT NULL,
+  `fileName` varchar(45) NOT NULL,
+  PRIMARY KEY (`PId`),
+  KEY `product_ibfk_1` (`fileName`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
-INSERT INTO `product` (`pID`, `name`, `description`, `price`, `availableQty`, `discount`, `brand`, `warrantyType`, `warrantyPeriod`, `model`, `dimension`, `weight`) VALUES
-(10, 'USB Mouse', 'USB 2.0, Plug &amp; Play, 6 months waranty', 790, 5, 5, '', 'Shop warranty', '3', '', '130*90', 100),
-(11, 'Toshiba power adaptor', '19v 3.95A', 2500, 5, 5, '', 'Company warranty', '12', '', '30*90', 240),
-(12, 'Sony tipo dual', 'Attractive design', 15000, 6, 12, 'Sony', 'Company warranty', '24', 'ST21i', '53*89', 113),
-(13, 'Xiaomi Power bank 10400mAh', 'Durable power bank', 5600, 5, 0, 'Xiaomi', 'Company warranty', '12', '', '', 254);
+INSERT INTO `product` (`PId`, `name`, `description`, `availableQuality`, `unitPrice`, `subCategory`, `discount`, `brand`, `warrantyType`, `warrantyPeriod`, `model`, `dimension`, `weight`, `dateAdded`, `fileName`) VALUES
+(6, 'test1', 'test', 5, 500, 'category', 5, 'samsung', 'company', '12', 'xxx', '12x35', 100, '2015-11-27', 'cartImage1.jpg');
 
 DROP TABLE IF EXISTS `subcategory`;
 CREATE TABLE IF NOT EXISTS `subcategory` (
@@ -71,11 +75,15 @@ CREATE TABLE IF NOT EXISTS `subcategory` (
   `category` int(5) NOT NULL,
   PRIMARY KEY (`scatID`),
   KEY `category` (`category`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 INSERT INTO `subcategory` (`scatID`, `name`, `category`) VALUES
-(1, 'Samsung 2', 14),
-(2, 'T shirts', 20);
+(1, 'Samsung 2', 2),
+(2, 'T shirts', 5);
+
+
+ALTER TABLE `product`
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`fileName`) REFERENCES `image` (`file_name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `subcategory`
   ADD CONSTRAINT `subcategory_ibfk_1` FOREIGN KEY (`category`) REFERENCES `category` (`catID`) ON DELETE CASCADE ON UPDATE CASCADE;
