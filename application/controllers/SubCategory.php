@@ -53,16 +53,20 @@ class SubCategory extends CI_Controller {
 			$this->data['cur_data'] = $temp[0];
 			$this->load->view('subcategory/sub_category_update', $this->data);
 		} else {
-			$data = array(
-				'id' => $id,
-				'fields' => array(
-					'name' => $this->input->post('subcategory'),
-					'category' => $this->input->post('category')
-				)
-			);
-			$this->subcategory_model->update($data);
+			if (isset($_POST['back'])) {
+				redirect('subcategory');
+			} else {
+				$data = array(
+					'id' => $id,
+					'fields' => array(
+						'name' => $this->input->post('subcategory'),
+						'category' => $this->input->post('category')
+					)
+				);
+				$this->subcategory_model->update($data);
 
-			redirect('subcategory');
+				redirect('subcategory');
+			}
 		}
 	}
 

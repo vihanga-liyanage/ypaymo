@@ -17,6 +17,7 @@
 		<?php echo form_dropdown("category", $categoryInfo, set_value('category', $cur_data['category'])) ?>
 		<?php echo form_error('category'); ?>
 		<br><br>
+		<button type="submit" name="back" value="add">Back</button>
 		<button type="submit" name="update_sub_category" value="add">Update</button>
 	</form>
 

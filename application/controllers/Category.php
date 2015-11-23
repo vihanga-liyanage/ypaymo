@@ -15,11 +15,10 @@ class Category extends CI_Controller {
 	}
 
 	public function index(){
-		$this->load->view('category_view', $this->data);
+		$this->load->view('category/category_home', $this->data);
 	}
 
-	public function insert()
-	{
+	public function insert() {
 		$this->load->library('form_validation');
 		
 		$this->form_validation->set_rules('cat_name', 'Category Name', 'required');
@@ -29,38 +28,53 @@ class Category extends CI_Controller {
 		if ($this->form_validation->run() == FALSE)
 		{
 			//In case of a validation error
-			$this->load->view('category_view');
+			$this->load->view('category/category_home');
 		}
 		else
 		{
-			//uploading the image
-			$config['upload_path'] = './assets/images/category/';
-			$config['allowed_types'] = 'gif|jpg|png|jpeg';
-			$config['max_size']	= '0';
-			$config['max_width']  = '0';
-			$config['max_height']  = '0';
+			//Insert data into category table
+			$params['cat_name'] = $this->input->post('cat_name');
+			$this->category_model->insert_into_category($params);
 
-			$this->load->library('upload', $config);
+			redirect('category');
+		}
+	}
 
-			if ( ! $this->upload->do_upload())
-			{
-				//if the uploading failed
-				$this->data['image_error'] = $this->upload->display_errors('<div class="error">', '</div>');
+	public function update($id, $state = 1){
+		if ($state == 1) {
+			$temp = $this->category_model->get_specific_category($id);
+			$this->data['cur_data'] = $temp[0];
+			$this->load->view('category/category_update', $this->data);
+		} else {
+			if (isset($_POST['back'])) {
+				redirect('category');
+			} else {
+				$data = array(
+					'id' => $id,
+					'fields' => array(
+						'name' => $this->input->post('category')
+					)
+				);
+				$this->category_model->update($data);
 
-				$this->load->view('category_view', $this->data);
+				redirect('category');
 			}
-			else
-			{
-				$data = array('upload_data' => $this->upload->data());
+		}
+	}
 
-				//Insert data into image table
-				$this->category_model->insert_into_image($data);
-
-				//Insert data into category table
-				$upload_data = $data['upload_data'];
-				$params['cat_name'] = $this->input->post('cat_name');
-				$params['cat_image'] = $upload_data['file_name'];
-				$this->category_model->insert_into_category($params);
+	public function delete($id, $state = 1){
+		if ($state == 1) {
+			$temp = $this->category_model->get_specific_category($id);
+			$this->data['cur_data'] = $temp[0];
+			$this->load->view('category/category_delete', $this->data);
+		} else {
+			if (isset($_POST['back'])) {
+				redirect('category');
+			} else {
+				$data = array(
+					'id' => $id
+				);
+				$this->category_model->delete($data);
 
 				redirect('category');
 			}

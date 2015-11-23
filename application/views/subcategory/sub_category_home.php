@@ -42,13 +42,13 @@
 		<tbody>
 			<?php 
 			if (isset($result)) {
-				foreach ($result as $category) { ?>
+				foreach ($result as $subcategory) { ?>
 			<tr>
-				<td><?php echo $category['scatID']; ?></td>
-				<td><?php echo $category['name']; ?></td>
-				<td><?php echo $categoryInfo[$category['category']]; ?></td>
-				<td><?php echo anchor('subcategory/update/'.$category['scatID'], 'Update'); ?></td>
-				<td><?php echo anchor('subcategory/delete/'.$category['scatID'], 'Delete'); ?></td>
+				<td><?php echo $subcategory['scatID']; ?></td>
+				<td><?php echo $subcategory['name']; ?></td>
+				<td><?php echo $categoryInfo[$subcategory['category']]; ?></td>
+				<td><?php echo anchor('subcategory/update/'.$subcategory['scatID'], 'Update'); ?></td>
+				<td><?php echo anchor('subcategory/delete/'.$subcategory['scatID'], 'Delete'); ?></td>
 			</tr>
 			<?php }} ?>
 		</tbody>

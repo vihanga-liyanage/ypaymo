@@ -11,10 +11,15 @@ class Category_model extends CI_Model {
 
 	public function insert_into_category($data) {
 		$fields = array(
-			'name' => $data['cat_name']
+			'name' => $data['cat_name'],
+			'image' => $data['cat_image']
 		);
 
 		$this->db->insert($this->table, $fields);
+	}
+
+	public function insert_into_image($data) {
+		$this->db->insert('image', $data['upload_data']);
 	}
 
 	public function get_categories(){
@@ -30,21 +35,5 @@ class Category_model extends CI_Model {
 			$output[$record['catID']] = $record['name'];
 		}
 		return $output;
-	}
-
-	public function get_specific_category($id){
-		$this->db->where(array('catID' => $id));
-		$query = $this->db->get($this->table);
-		return $query->result_array();
-	}
-
-	public function update($data){
-		$this->db->where(array('catID' => $data['id']));
-		$this->db->update($this->table, $data['fields']);
-	}
-
-	public function delete($data){
-		$this->db->where(array('catID' => $data['id']));
-		$this->db->delete($this->table);
 	}
 }
