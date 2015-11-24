@@ -279,7 +279,7 @@ body {
 	padding: 20px 0;
 	background: #FFF;
 }
-.content h2 {
+.content h2, .content h3 {
 	color: #383838;
 	margin-bottom: 0.5em;
 	font-size: 1.5em;
@@ -288,6 +288,9 @@ body {
 	font-weight: normal;
 	margin-top: 0px;
 	text-transform: uppercase;
+}
+ .content h3 {
+	font-size: 1.2em;
 }
 .content_top{
 	padding: 15px 20px;
@@ -1220,7 +1223,7 @@ body {
 .col {
 	display: block;
 	float: left;
-	margin: 0% 0 1% 1.6%;
+	margin: 0% 0 1% 0%;
 }
 .col:first-child {
 	margin-left: 0;
@@ -1592,4 +1595,28 @@ body {
 	.contact-form input[type="text"],.contact-form textarea{
 		width:93%;
 	}
+}
+
+.error {
+	color: #FF0000;
+	font-family: "ambleregular";
+}
+.form-box {
+	border: 1px solid #C0C0C0;
+	border-radius: 5px;
+}
+span {
+	text-transform: none;
+}
+.dropdown {
+	padding: 6px;
+	display: block;
+	background:none;
+	border:1px solid #CACACA;
+	outline: none;
+	color: #464646;
+	font-size:1em;
+	font-weight:bold;
+	font-family: Arial, Helvetica, sans-serif;
+	-webkit-appearance: none;
 }

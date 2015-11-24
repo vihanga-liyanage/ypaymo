@@ -1,16 +1,31 @@
-
-<style>
-	.error {color: #FF0000;}
-</style>
-
-	<h3>Update sub category</h3>
-	<?php echo form_open('category/update/'.$cur_data['catID'].'/0/'); ?>
-		Category Name 
-		<input type="text" name="category" value="<?php echo set_value('category', $cur_data['name']); ?>" />
-		<?php echo form_error('category'); ?>
-		<br><br>
-		<button type="submit" name="back" value="add">Back</button>
-		<button type="submit" name="update_category" value="add">Update</button>
-	</form>
-
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
+<div class="main">
+    <div class="content">
+    	<div class="section group">
+			<div class="col span_2_of_3 form-box">
+			  	<div class="contact-form">
+					<h3>Update category</h3>
+					<?php echo form_open('category/update/'.$cur_data['catID'].'/0/'); ?>
+						<span><label>Category Name</label></span>
+						<span>
+							<input type="text" class="textbox" name="cat_name" 
+									value="<?php 
+												if(isset($cur_data['name'])){
+													echo set_value('cat_name', $cur_data['name']);
+												} else {
+													echo set_value('cat_name');
+												} 
+											?>" />
+						</span>
+						<?php echo form_error('cat_name'); ?>
+						<span><input class="myButton" type="submit" name="update_category" style="margin-top:5px;" value="Update"></span>
+						
+						<span><input class="myButton" type="submit" name="back" value="Back" style="margin-right:100px;"></span>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>

@@ -56,6 +56,7 @@ $route['delivery'] = 'Pages/view/delivery';
 $route['home'] = 'Pages/view/home';
 $route['news'] = 'Pages/view/news';
 $route['preview'] = 'Pages/view/preview';
+
 $route['default_controller'] = 'Pages/view';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
