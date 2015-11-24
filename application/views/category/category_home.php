@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Category</title>
-	<style>
-		.error {color: #FF0000;}
-	</style>
-</head>
-<body>
+<style>
+	.error {color: #FF0000;}
+</style>
+
 	<h2>Welcome to category management!</h2>
 	<h3>Add new category</h3>
 	<div style="color:green;">
@@ -47,5 +42,3 @@
 		</tbody>
 	</table>
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
-</body>
-</html>

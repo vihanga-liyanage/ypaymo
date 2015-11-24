@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Category</title>
-	<style>
-		.error {color: #FF0000;}
-	</style>
-</head>
-<body>
+
+<style>
+	.error {color: #FF0000;}
+</style>
 	<h3>Delete category</h3>
 	<?php echo form_open('category/delete/'.$cur_data['catID'].'/0/'); ?>
 		Sub Category Name : <?php echo $cur_data['name']; ?>
@@ -17,5 +12,3 @@
 	</form>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
-</body>
-</html>
