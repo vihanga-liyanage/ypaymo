@@ -58,5 +58,6 @@ $route['news'] = 'Pages/view/news';
 $route['preview'] = 'Pages/view/preview';
 
 $route['default_controller'] = 'Pages/view';
+//$route['default_controller'] = 'cproduct';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
