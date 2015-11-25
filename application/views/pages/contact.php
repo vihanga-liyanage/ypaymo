@@ -9,15 +9,15 @@
 					    <form method="post" action="contact-post.html">
 					    	<div>
 						    	<span><label>Name</label></span>
-						    	<span><input name="userName" type="text" class="textbox" ></span>
+						    	<span><input name="userName" type="text"  ></span>
 						    </div>
 						    <div>
 						    	<span><label>E-mail</label></span>
-						    	<span><input name="userEmail" type="text" class="textbox"></span>
+						    	<span><input name="userEmail" type="text" ></span>
 						    </div>
 						    <div>
 						     	<span><label>Company Name</label></span>
-						    	<span><input name="userPhone" type="text" class="textbox"></span>
+						    	<span><input name="userPhone" type="text" ></span>
 						    </div>
 						    <div>
 						    	<span><label>Subject</label></span>

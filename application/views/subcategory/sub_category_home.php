@@ -13,7 +13,7 @@
 					</div>
 					<?php echo form_open('subcategory/insert'); ?>
 						<span><label>Sub Category Name</label></span>
-						<span><input type="text" name="subcategory" class="textbox" value="<?php echo set_value('subcategory'); ?>" /></span>
+						<span><input type="text" name="subcategory"  value="<?php echo set_value('subcategory'); ?>" /></span>
 						<?php echo form_error('subcategory'); ?>
 						<span><label>Select Category</label></span>
 						<span>
