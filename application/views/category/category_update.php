@@ -7,7 +7,7 @@
 					<?php echo form_open('category/update/'.$cur_data['catID'].'/0/'); ?>
 						<span><label>Category Name</label></span>
 						<span>
-							<input type="text" class="textbox" name="cat_name" 
+							<input type="text"  name="cat_name" 
 									value="<?php 
 												if(isset($cur_data['name'])){
 													echo set_value('cat_name', $cur_data['name']);

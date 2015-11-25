@@ -22,6 +22,17 @@
 				</div>
 				<div class="account_desc">
 					<ul>
+						<?php 
+							if (isset($admin_logged)) {
+								if ($admin_logged) {
+									$font = 'ambleregular';
+									echo '<span style="font-family: '.$font.'; padding: 0px 14px 0px 0px;">Welcome Admin!</span>';
+									echo '<li>';
+									echo anchor('administrator/signout', 'Sign Out');
+									echo '</li>';
+								}
+							} 
+						?>
 						<li><a href="#">Delivery</a></li>
 						<li><a href="#">Checkout</a></li>
 					</ul>
@@ -30,7 +41,7 @@
 			</div>
 			<div class="header_top">
 				<div class="logo">
-					<a href="index.html"><img src="<?php echo base_url(); ?>assets/images/logo.png" alt="" /></a>
+					<a href="<?php echo base_url('home'); ?>"><img src="<?php echo base_url(); ?>assets/images/logo.png" alt="" /></a>
 				</div>
 				<div class="cart">
 					<p>Welcome to our Online Store! <span>Cart:</span>

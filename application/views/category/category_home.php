@@ -13,7 +13,7 @@
 					</div>
 					<?php echo form_open('category/insert'); ?>
 						<span><label>Category Name</label></span>
-						<span><input type="text" name="cat_name" class="textbox" value="<?php echo set_value('cat_name'); ?>" /></span>
+						<span><input type="text" name="cat_name"  value="<?php echo set_value('cat_name'); ?>" /></span>
 						<?php echo form_error('cat_name'); ?>
 						
 						<span><input class="myButton" type="submit" name="add_category" value="Add"></span>

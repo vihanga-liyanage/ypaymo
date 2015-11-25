@@ -7,7 +7,7 @@
 					<?php echo form_open('subcategory/update/'.$cur_data['scatID'].'/0/'); ?>
 						<span><label>Sub Category Name</label></span>
 						<span>
-							<input type="text" class="textbox" name="subcategory" 
+							<input type="text"  name="subcategory" 
 									value="<?php 
 												if (isset($cur_data['name'])) {
 													echo set_value('subcategory', $cur_data['name']);

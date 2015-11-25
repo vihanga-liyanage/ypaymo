@@ -27,16 +27,13 @@ class Category extends CI_Controller {
 
 	public function insert() {
 		
-		if ($this->form_validation->run() == FALSE)
-		{
+		if ($this->form_validation->run() == FALSE) {
 			//In case of a validation error
 			$this->load->view('templates/header');
 			$this->load->view('templates/nav');
 			$this->load->view('category/category_home', $this->data);
 			$this->load->view('templates/footer');
-		}
-		else
-		{
+		} else {
 			//Insert data into category table
 			$params['cat_name'] = $this->input->post('cat_name');
 			$this->category_model->insert_into_category($params);

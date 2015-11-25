@@ -17,8 +17,13 @@ class Category_model extends CI_Model {
 		$this->db->insert($this->table, $fields);
 	}
 
-	public function get_categories(){
-		$query = $this->db->get($this->table);
+	public function get_categories($limit = ''){
+		if ($limit == '') {
+			$query = $this->db->get($this->table);
+		} else {
+			$query = $this->db->get($this->table, $limit);
+		}
+		
 		return $query->result_array();
 	}
 
