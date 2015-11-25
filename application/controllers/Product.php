@@ -9,27 +9,39 @@ class Product extends CI_Controller
         parent::__construct();
         $this->load->helper(array('form', 'url'));
         $this->load->model(array('product_model'));
+
         $this->data['img_path'] = base_url("assets/images/");
         $this->data['result'] = $this->product_model->get_product();
+        $this->data['admin_logged'] = $this->session->userdata('logged_in');
+        
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('name','name', 'required');
-        $this->form_validation->set_rules('description','description', 'required');
-        $this->form_validation->set_rules('availableQuality','availableQuality', 'required');
-        $this->form_validation->set_rules('unitPrice','unitPrice', 'required');
-        $this->form_validation->set_rules('subCategory','subCategory', 'required');
-        $this->form_validation->set_rules('brand','brand', 'required');
-        $this->form_validation->set_rules('warrantyType','warrantyType', 'required');
+        
+        $this->form_validation->set_rules('name','Name', 'required');
+        $this->form_validation->set_rules('description','Description', 'required');
+        $this->form_validation->set_rules('availableQuality','Available Quality', 'required');
+        $this->form_validation->set_rules('unitPrice','Unit Price', 'required');
+        $this->form_validation->set_rules('subCategory','Sub Category', 'required');
+        $this->form_validation->set_rules('brand','Brand', 'required');
+        $this->form_validation->set_rules('warrantyType','Warranty Type', 'required');
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 
     }
 
     public function index()
     {
-        $this->load->view('templates/header');
-        $this->load->view('templates/nav');
-        $this->data['img_path'] = base_url("assets/images/");
-        $this->load->view('product/product_home', $this->data);
-        $this->load->view('templates/footer');
+        if ($this->session->userdata('logged_in')) {
+            
+            $this->data['admin_logged'] = $this->session->userdata('logged_in');
+
+            $this->load->view('templates/header', $this->data);
+            $this->data['img_path'] = base_url("assets/images/");
+            $this->load->view('product/product_home', $this->data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/header', $this->data);
+            $this->load->view('admin_login', $this->data);
+            $this->load->view('templates/footer');
+        }
     }
 
     public function insert()
@@ -37,10 +49,7 @@ class Product extends CI_Controller
 
         if ($this->form_validation->run() == FALSE) {
             //In case of a validation error
-            $this->load->view('templates/header');
-            $this->load->view('templates/nav');
-            $this->load->view('product/product_home');
-            $this->load->view('templates/footer');
+            $this->index();
         } else {
 
             $config['upload_path'] = './assets/images/';
@@ -54,7 +63,7 @@ class Product extends CI_Controller
             {
                 //if the uploading failed
                 $this->data['image_error'] = $this->upload->display_errors('<div class="error">', '</div>');
-                $this->load->view('product/product_home', $this->data);
+                $this->index();
             }
             else
             {
@@ -81,19 +90,15 @@ class Product extends CI_Controller
                 $params['fileName'] = $upload_data['file_name'];
 
                 $this->product_model->insert_into_product($params);
-                //$this->index();
+
                 redirect('Product');
-
-
             }
-
-
         }
     }
     public function update($id, $state = 1){
 
         if ($state == 1) {
-            $this->load->view('templates/header');
+            $this->load->view('templates/header', $this->data);
             $this->load->view('templates/nav');
             $temp = $this->product_model->get_given_product($id);
             $this->load->view('templates/footer');
@@ -107,7 +112,7 @@ class Product extends CI_Controller
             } else {
                 if ($this->form_validation->run() == FALSE)
                 {
-                    $this->load->view('templates/header');
+                    $this->load->view('templates/header', $this->data);
                     $this->load->view('templates/nav');
                     //In case of a validation error
                     $this->data['cur_data'] = array('PId' => $id);
@@ -131,8 +136,6 @@ class Product extends CI_Controller
                             'model' => $this->input->post('model'),
                             'dimension'=> $this->input->post('dimension'),
                             'weight' => $this->input->post('weight')
-
-
                         )
                     );
                     $this->product_model->update($data);
@@ -143,7 +146,7 @@ class Product extends CI_Controller
     }
     public function delete($id,$state=1){
         if ($state == 1) {
-            $this->load->view('templates/header');
+            $this->load->view('templates/header', $this->data);
             $this->load->view('templates/nav');
             $temp = $this->product_model->get_given_product($id);
             $this->data['cur_data'] = $temp[0];

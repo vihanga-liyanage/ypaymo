@@ -9,30 +9,36 @@ class Category extends CI_Controller {
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
 		$this->load->model(array('category_model'));
-		$this->load->library('form_validation');
 
 		$this->data['result'] = $this->category_model->get_categories();
 		$this->data['img_path'] = base_url("assets/images/category/");
+		$this->data['admin_logged'] = $this->session->userdata('logged_in');
 
+		$this->load->library('form_validation');
 		$this->form_validation->set_rules('cat_name', 'Category Name', 'required');
 		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 	}
 
 	public function index(){
-		$this->load->view('templates/header');
-		$this->load->view('templates/nav');
-		$this->load->view('category/category_home', $this->data);
-		$this->load->view('templates/footer');
+		if ($this->session->userdata('logged_in')) {
+            
+            $this->data['admin_logged'] = $this->session->userdata('logged_in');
+
+            $this->load->view('templates/header', $this->data);
+            $this->load->view('category/category_home', $this->data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/header', $this->data);
+            $this->load->view('admin_login', $this->data);
+            $this->load->view('templates/footer');
+        }
 	}
 
 	public function insert() {
 		
 		if ($this->form_validation->run() == FALSE) {
 			//In case of a validation error
-			$this->load->view('templates/header');
-			$this->load->view('templates/nav');
-			$this->load->view('category/category_home', $this->data);
-			$this->load->view('templates/footer');
+			$this->index();
 		} else {
 			//Insert data into category table
 			$params['cat_name'] = $this->input->post('cat_name');
@@ -46,7 +52,7 @@ class Category extends CI_Controller {
 		if ($state == 1) {
 			$temp = $this->category_model->get_specific_category($id);
 			$this->data['cur_data'] = $temp[0];
-			$this->load->view('templates/header');
+			$this->load->view('templates/header', $this->data);
 			$this->load->view('templates/nav');
 			$this->load->view('category/category_update', $this->data);
 			$this->load->view('templates/footer');
@@ -58,7 +64,7 @@ class Category extends CI_Controller {
 				{
 					//In case of a validation error
 					$this->data['cur_data'] = array('catID' => $id);
-					$this->load->view('templates/header');
+					$this->load->view('templates/header', $this->data);
 					$this->load->view('templates/nav');
 					$this->load->view('category/category_update', $this->data);
 					$this->load->view('templates/footer');
@@ -81,7 +87,7 @@ class Category extends CI_Controller {
 		if ($state == 1) {
 			$temp = $this->category_model->get_specific_category($id);
 			$this->data['cur_data'] = $temp[0];
-			$this->load->view('templates/header');
+			$this->load->view('templates/header', $this->data);
 			$this->load->view('templates/nav');
 			$this->load->view('category/category_delete', $this->data);
 			$this->load->view('templates/footer');
