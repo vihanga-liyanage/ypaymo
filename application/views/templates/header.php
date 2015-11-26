@@ -30,6 +30,9 @@
 									echo '<li>';
 									echo anchor('administrator/signout', 'Sign Out');
 									echo '</li>';
+									echo '<li>';
+									echo anchor('administrator', 'Home');
+									echo '</li>';
 								}
 							} 
 						?>

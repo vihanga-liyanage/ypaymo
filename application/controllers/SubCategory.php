@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class SubCategory extends CI_Controller {
+class Subcategory extends CI_Controller {
 
 	private $data;
 
