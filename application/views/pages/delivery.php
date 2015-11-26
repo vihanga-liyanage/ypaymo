@@ -5,18 +5,18 @@
     	<div class="section group">
 				<div class="grid_1_of_3 images_1_of_3">
 					  <img src="<?php echo base_url(); ?>assets/images/delivery-img1.jpg" alt="" />
-					  <h3>Lorem Ipsum is simply dummy text </h3>
-					  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+					  <h3>Offer Free Shipping </h3>
+					  <p>Offering free shipping - usually just for domestic orders - is a sure-fire way to get your customer's attention, however, depending on your margins, it can also potentially cut into your profits.That said, the marketing punch that displaying 'Free Shipping' on your website provides can be a significant advantage over any competitors that don't offer the same perk. Deciding to offer free shipping will require you to either absorb the cost or slightly increase your prices to cover it.</p>
 				</div>
 				<div class="grid_1_of_3 images_1_of_3">
 					  <img src="<?php echo base_url(); ?>assets/images/delivery-img2.jpg" alt="" />
-					  <h3>Lorem Ipsum is simply dummy text </h3>
-					  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+					  <h3>Charge What You Get Charged</h3>
+					  <p>In some shopping carts (like Shopify) it's possible to setup real-time shipping quotes - in other words, your customers more or less pay exactly what you would pay to ship your products.There are always small discrepancies that can happen, of course, but in many cases you can end up breaking even between the shipping charges you collect and what you ultimately have to pay to ship the package.</p>
 				</div>
 				<div class="grid_1_of_3 images_1_of_3">
 					  <img src="<?php echo base_url(); ?>assets/images/delivery-img3.jpg" alt="" />
-					  <h3>Lorem Ipsum is simply dummy text </h3>
-					  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+					  <h3>Offer Flat Rates</h3>
+					  <p>Your third option is to offer a flat rate for every package, or flat rates for weight ranges and order totals.This particular method of charging for shipping requires a bit of preparation as you need to figure out your average cost of shipping a package. This is a best practice you should be doing anyway to make sure that you don't drastically undercharge or overcharge your customers.</p>
 				</div>
 			</div>	
 		<div class="faqs">
