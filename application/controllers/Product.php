@@ -10,7 +10,7 @@ class Product extends CI_Controller
         $this->load->helper(array('form', 'url'));
         $this->load->model(array('product_model'));
 
-        $this->data['img_path'] = base_url("assets/images/");
+        $this->data['img_path'] = base_url("assets/images/products/");
         $this->data['result'] = $this->product_model->get_product();
         $this->data['admin_logged'] = $this->session->userdata('logged_in');
         
@@ -34,7 +34,6 @@ class Product extends CI_Controller
             $this->data['admin_logged'] = $this->session->userdata('logged_in');
 
             $this->load->view('templates/header', $this->data);
-            $this->data['img_path'] = base_url("assets/images/");
             $this->load->view('product/product_home', $this->data);
             $this->load->view('templates/footer');
         } else {
@@ -52,7 +51,7 @@ class Product extends CI_Controller
             $this->index();
         } else {
 
-            $config['upload_path'] = './assets/images/';
+            $config['upload_path'] = './assets/images/products/';
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size']	= '0';
             $config['max_width']  = '0';
@@ -98,14 +97,14 @@ class Product extends CI_Controller
     public function update($id, $state = 1){
 
         if ($state == 1) {
+            $temp = $this->product_model->get_given_product($id);
+            $this->data['cur_data'] = $temp[0];
+            
             $this->load->view('templates/header', $this->data);
             $this->load->view('templates/nav');
-            $temp = $this->product_model->get_given_product($id);
-            $this->load->view('templates/footer');
-
-            $this->data['cur_data'] = $temp[0];
             $this->load->view('product/product_update', $this->data);
-
+            $this->load->view('templates/footer');
+            
         } else {
             if (isset($_POST['back'])) {
                 redirect('Product');

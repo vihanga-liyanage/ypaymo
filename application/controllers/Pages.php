@@ -8,10 +8,10 @@ class Pages extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->helper(array('url'));
-		$this->load->model(array('category_model'));
+		$this->load->model(array('category_model', 'product_model'));
 	}
 
-	function view($page = 'home'){
+	function view($page = 'home', $id = ''){
 
 		if (!file_exists('application/views/pages/'.$page.'.php')) {
 			show_404();
@@ -25,15 +25,17 @@ class Pages extends CI_Controller {
 			$this->load->view('pages/'.$page);
 			$this->load->view('templates/footer');
 
-		} elseif ($page == "category") {
+		} elseif ($page == "categoryProducts") {
+
 			$this->data[$page] = "";
-			$this->data['categories'] = $this->category_model->get_categories();
+			$this->data['product_details'] = $this->product_model->get_product_by_category($id);
+			$tmp = $this->category_model->get_specific_category($id);
+			$this->data['categoryName'] = $tmp[0]['name'];
 			$this->load->view('templates/header');
 			$this->load->view('templates/nav', $this->data);
-			$this->load->view('templates/slider', $this->data);
-			$this->load->view('pages/'.$page);
+			$this->load->view('pages/'.$page, $this->data);
 			$this->load->view('templates/footer');
-			
+
 		} else {
 			$this->data[$page] = "";
 

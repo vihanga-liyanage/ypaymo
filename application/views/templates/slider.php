@@ -6,7 +6,7 @@
 				  		<?php 
 						if (isset($categories)) {
 							foreach ($categories as $category) { ?>
-				      	<li><?php echo anchor('', $category['name']); ?></li>
+				      	<li><?php echo anchor('categoryProducts/'.$category['catID'], $category['name']); ?></li>
 				       	<?php }} ?>
 				  	</ul>
 				</div>					

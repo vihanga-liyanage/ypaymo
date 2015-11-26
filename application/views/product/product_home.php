@@ -25,11 +25,17 @@
                     <?php echo form_error('unitPrice'); ?>
 
                     <span><label>SubCategory</label></span>
-                    <span><select name="subCategory">
-                        <option value="Samsung2" <?php echo set_select('subCategory', 'Samsung2'); ?> >Samsung2</option>
-                        <option value="T shirts" <?php echo set_select('subCategory', 'T shirts'); ?> >T shirts</option>
-
-                    </select></span>
+                    <span>
+                        <?php
+                            $js = 'class="dropdown"';
+                            $categoryInfo = array(
+                                '1' => 'Samsung',
+                                '4' => 'Sony',
+                                '5' => 'HTC'
+                            );
+                            echo form_dropdown("subCategory", $categoryInfo, set_value('subCategory'), $js);
+                        ?>
+                    </span>
 
                     <?php echo form_error('subCategory'); ?>
 

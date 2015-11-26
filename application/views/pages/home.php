@@ -13,19 +13,21 @@
 	    	</div>
 		      <div class="section group">
 					<div class="grid_1_of_4 images_1_of_4">
-						 <a href="preview.html"><img src="<?php echo base_url(); ?>assets/images/feature-pic1.jpg" alt="" /></a>
-						 <h2>Lorem Ipsum is simply </h2>
+						<a href="preview.html">
+							<img src="<?php echo base_url(); ?>assets/images/feature-pic1.jpg" alt="" />
+						</a>
+						<h2>Lorem Ipsum is simply </h2>
 						<div class="price-details">
-					       <div class="price-number">
+					        <div class="price-number">
 								<p><span class="rupees">$620.87</span></p>
 						    </div>
-						       		<div class="add-cart">								
-										<h4><a href="preview">Add to Cart</a></h4>
-								     </div>
-								 <div class="clear"></div>
+						    <div class="add-cart">								
+								<h4><a href="preview">Add to Cart</a></h4>
+						    </div>
+							<div class="clear"></div>
 						</div>
-						 
 					</div>
+					
 					<div class="grid_1_of_4 images_1_of_4">
 						<a href="preview.html"><img src="<?php echo base_url(); ?>assets/images/feature-pic2.jpg" alt="" /></a>
 						 <h2>Lorem Ipsum is simply </h2>
@@ -117,16 +119,16 @@
 						</div>
 					</div>
 					<div class="grid_1_of_4 images_1_of_4">
-					 <a href="preview.html"><img src="<?php echo base_url(); ?>assets/images/new-pic3.jpg" alt="" /></a>
-						 <h2>Lorem Ipsum is simply </h2>					 
-						 <div class="price-details">
-					       <div class="price-number">
+						<a href="preview.html"><img src="<?php echo base_url(); ?>assets/images/new-pic3.jpg" alt="" /></a>
+						<h2>Lorem Ipsum is simply </h2>					 
+						<div class="price-details">
+					    	<div class="price-number">
 								<p><span class="rupees">$899.99</span></p>
 						    </div>
-						       		<div class="add-cart">								
-										<h4><a href="preview.html">Add to Cart</a></h4>
-								     </div>
-								 <div class="clear"></div>
+					       	<div class="add-cart">								
+								<h4><a href="preview.html">Add to Cart</a></h4>
+							</div>
+							<div class="clear"></div>
 						</div>
 					</div>
 				</div>

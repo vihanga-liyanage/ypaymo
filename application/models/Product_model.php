@@ -38,6 +38,13 @@ class Product_model extends CI_Model {
     }
 
     public function get_product_by_category($catId) {
+        $this->db->select('p.fileName, p.name, p.unitPrice, c.name AS category');
+        $this->db->where(array('c.catID' => $catId));
+        $this->db->from('product AS p');// I use aliasing make joins easier
+        $this->db->join('subcategory AS sc', 'p.subCategory = sc.scatID', 'INNER');
+        $this->db->join('category AS c', 'sc.category = c.catID', 'INNER');
+        $query = $this->db->get();
+        return $query->result_array();
         
     }
 
