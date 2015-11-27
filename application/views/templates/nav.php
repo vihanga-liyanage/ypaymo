@@ -6,31 +6,31 @@
 					echo "class='active'";
 				}
 				?> >
-				<a href="home">Home</a></li>
+				<a href="<?php echo base_url('home'); ?>">Home</a></li>
 			<li <?php
 				if (isset($about)) {
 					echo "class='active'";
 				}
 				?> >
-				<a href="about">About</a></li>
+				<a href="<?php echo base_url('about'); ?>">About</a></li>
 			<li <?php
 				if (isset($delivery)) {
 					echo "class='active'";
 				}
 				?> >
-				<a href="delivery">Delivery</a></li>
+				<a href="<?php echo base_url('delivery'); ?>">Delivery</a></li>
 			<li <?php
 				if (isset($news)) {
 					echo "class='active'";
 				}
 				?> >
-				<a href="news">News</a></li>
+				<a href="<?php echo base_url('news'); ?>">News</a></li>
 			<li <?php
 				if (isset($contact)) {
 					echo "class='active'";
 				}
 				?> >
-				<a href="contact">Contact</a></li>
+				<a href="<?php echo base_url('contact'); ?>">Contact</a></li>
 			<div class="clear"></div>
 		</ul>
 	</div>

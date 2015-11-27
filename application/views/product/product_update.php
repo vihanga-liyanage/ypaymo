@@ -141,7 +141,7 @@
                     <br>
 
 
-                    <span><input class="myButton" type="submit" name="update" style="margin-top:5px;" ></span>
+                    <span><input class="myButton" type="submit" name="update" value="Update" style="margin-top:5px;" ></span>
 
                     <span><input class="myButton" type="submit" name="back" value="Back" style="margin-right:100px;"></span>
 

@@ -56,6 +56,7 @@ $route['delivery'] = 'Pages/view/delivery';
 $route['home'] = 'Pages/view/home';
 $route['news'] = 'Pages/view/news';
 $route['preview'] = 'Pages/view/preview';
+$route['categoryProducts/(:any)'] = 'Pages/view/categoryProducts/$1';
 
 $route['default_controller'] = 'Pages/view';
 //$route['default_controller'] = 'cproduct';

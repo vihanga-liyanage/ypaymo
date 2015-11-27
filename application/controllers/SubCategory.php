@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class SubCategory extends CI_Controller {
+class Subcategory extends CI_Controller {
 
 	private $data;
 
@@ -9,22 +9,32 @@ class SubCategory extends CI_Controller {
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
 		$this->load->model(array('subcategory_model', 'category_model'));
+
+		$this->data['categoryInfo'] = $this->category_model->get_category_touples();
+		$this->data['result'] = $this->subcategory_model->get_sub_categories();
+		$this->data['admin_logged'] = $this->session->userdata('logged_in');
+
 		$this->load->library('form_validation');
 
 		$this->form_validation->set_rules('subcategory', 'Sub Category Name', 'required');
 		$this->form_validation->set_rules('category', 'Category', 'greater_than[0]');
 		$this->form_validation->set_message('greater_than', 'Please select a valid %s');
 		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
-
-		$this->data['categoryInfo'] = $this->category_model->get_category_touples();
-		$this->data['result'] = $this->subcategory_model->get_sub_categories();
 	}
 
 	public function index(){
-		$this->load->view('templates/header');
-		$this->load->view('templates/nav');
-		$this->load->view('subcategory/sub_category_home', $this->data);
-		$this->load->view('templates/footer');
+		if ($this->session->userdata('logged_in')) {
+            
+            $this->data['admin_logged'] = $this->session->userdata('logged_in');
+
+            $this->load->view('templates/header', $this->data);
+            $this->load->view('subcategory/sub_category_home', $this->data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/header', $this->data);
+            $this->load->view('admin_login', $this->data);
+            $this->load->view('templates/footer');
+        }
 	}
 
 	public function insert()
@@ -32,10 +42,7 @@ class SubCategory extends CI_Controller {
 		if ($this->form_validation->run() == FALSE)
 		{
 			//In case of a validation error
-			$this->load->view('templates/header');
-			$this->load->view('templates/nav');
-			$this->load->view('subcategory/sub_category_home', $this->data);
-			$this->load->view('templates/footer');
+			$this->index();
 		}
 		else
 		{
@@ -54,7 +61,7 @@ class SubCategory extends CI_Controller {
 			$temp = $this->subcategory_model->get_specific_subcategory($id);
 			$this->data['cur_data'] = $temp[0];
 
-			$this->load->view('templates/header');
+			$this->load->view('templates/header', $this->data);
 			$this->load->view('templates/nav');
 			$this->load->view('subcategory/sub_category_update', $this->data);
 			$this->load->view('templates/footer');
@@ -66,7 +73,7 @@ class SubCategory extends CI_Controller {
 				{
 					//In case of a validation error
 					$this->data['cur_data'] = array('scatID' => $id);
-					$this->load->view('templates/header');
+					$this->load->view('templates/header', $this->data);
 					$this->load->view('templates/nav');
 					$this->load->view('subcategory/sub_category_update', $this->data);
 					$this->load->view('templates/footer');
@@ -92,7 +99,7 @@ class SubCategory extends CI_Controller {
 			$temp = $this->subcategory_model->get_specific_subcategory($id);
 			$this->data['cur_data'] = $temp[0];
 
-			$this->load->view('templates/header');
+			$this->load->view('templates/header', $this->data);
 			$this->load->view('templates/nav');
 			$this->load->view('subcategory/sub_category_delete', $this->data);
 			$this->load->view('templates/footer');
